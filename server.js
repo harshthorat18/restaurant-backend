@@ -7,7 +7,11 @@ app.use(cors())
 const MenuItemModel = require('./models/MenuItem');
 const orderModel = require('./models/Order');
 
-mongoose.connect("mongodb://localhost:27017/restaurant")
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 .then(()=>(console.log("DB connected successfully")))
 .catch((err)=>{console.log(err)})
 
